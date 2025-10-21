@@ -9,6 +9,7 @@ use App\Http\Controllers\RelasiController;
 use App\Models\siswa;
 use App\Models\Wali;
 use App\Models\Mahasiswa;
+use App\Models\Hobi;
 
 
 Route::get('/', function () {
@@ -96,9 +97,19 @@ Route::get('/wali-ke-mahasiswa', function () {
     return "{$wali->nama} adalah wali dari {$wali->mahasiswa->nama}";
 });
 
-// route mengambil methot OneToMany
+// route mengambil method OneToMany
 Route::get('/one-to-many', [RelasiController::class, 'oneToMany']);
 Route::get('/mahasiswa-ke-dosen', function () {
     $mhs = Mahasiswa::where('nim', '123456')->first();
     return "{$mhs->nama} dibimbing oleh {$mhs->dosen->nama}";
 });
+
+Route::get('/many-to-many', [RelasiController::class, 'manyToMany']);
+Route::get('/hobi/bola', function () {
+    $hobi = Hobi::where('nama_hobi', 'Bermain Bola')->first();
+    foreach ($hobi->mahasiswas as $mhs) {
+        echo $mhs->nama . '<br>';
+    }
+});
+
+Route::get('eloquent', [RelasiController::class, 'eloquent']);
