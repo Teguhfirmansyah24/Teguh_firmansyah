@@ -4,13 +4,16 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\BiodatasController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RelasiController;
 use App\Http\Controllers\TeleponController;
+use App\Http\Controllers\MuridController;
 use App\Models\siswa;
 use App\Models\Wali;
 use App\Models\Mahasiswa;
 use App\Models\Hobi;
+use App\Models\Murid;
 use App\Models\Telepon;
 
 Route::get('/', function () {
@@ -80,10 +83,12 @@ Route::get('biodata', [BiodatasController::class, 'menampilkan']);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('post', PostsController::class);
-Route::resource('biodata', BiodatasController::class);
-Route::resource('pengguna', PenggunaController::class);
-Route::resource('telepon', TeleponController::class);
+Route::resource('/post', PostsController::class);
+Route::resource('/biodata', BiodatasController::class);
+Route::resource('/pengguna', PenggunaController::class);
+Route::resource('/telepon', TeleponController::class);
+Route::resource('/kelas', KelasController::class);
+Route::resource('/murid', MuridController::class);
 
 // route mengambil method oneToOne
 Route::get('/one-to-one', [RelasiController::class, 'oneToOne']);
