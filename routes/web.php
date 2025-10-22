@@ -6,11 +6,12 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\BiodatasController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RelasiController;
+use App\Http\Controllers\TeleponController;
 use App\Models\siswa;
 use App\Models\Wali;
 use App\Models\Mahasiswa;
 use App\Models\Hobi;
-
+use App\Models\Telepon;
 
 Route::get('/', function () {
     return view('welcome');
@@ -82,6 +83,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('post', PostsController::class);
 Route::resource('biodata', BiodatasController::class);
 Route::resource('pengguna', PenggunaController::class);
+Route::resource('telepon', TeleponController::class);
 
 // route mengambil method oneToOne
 Route::get('/one-to-one', [RelasiController::class, 'oneToOne']);

@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pengguna extends Model
+class Telepon extends Model
 {
     use HasFactory;
 
     // kolom yang boleh di isi
-    protected $fillable = ['id', 'nama'];
+    protected $fillable = ['id', 'nomor', 'id_pengguna'];
     public $timestamps = true;
 
-    // relasi ke tabel telepon
-    public function telepon()
+    // relasi ke tabel pengguna
+    public function pengguna()
     {
-        return $this->hasOne(Telepon::class);
+        return $this->belongsTo(Pengguna::class, 'id_pengguna');
     }
 }
