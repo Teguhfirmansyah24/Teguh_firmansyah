@@ -9,12 +9,17 @@ use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RelasiController;
 use App\Http\Controllers\TeleponController;
 use App\Http\Controllers\MuridController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\PembeliController;
+use App\Http\Controllers\TransaksiController;
+use App\Models\Barang;
 use App\Models\siswa;
 use App\Models\Wali;
 use App\Models\Mahasiswa;
 use App\Models\Hobi;
 use App\Models\Murid;
 use App\Models\Telepon;
+use App\Models\Transaksi;
 
 Route::get('/', function () {
     return view('welcome');
@@ -89,6 +94,9 @@ Route::resource('/pengguna', PenggunaController::class);
 Route::resource('/telepon', TeleponController::class);
 Route::resource('/kelas', KelasController::class);
 Route::resource('/murid', MuridController::class);
+Route::resource('/barang', BarangController::class);
+Route::resource('/pembeli', PembeliController::class);
+Route::resource('/transaksi', TransaksiController::class);
 
 // route mengambil method oneToOne
 Route::get('/one-to-one', [RelasiController::class, 'oneToOne']);
