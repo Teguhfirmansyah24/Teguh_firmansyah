@@ -50,7 +50,7 @@ class TransaksiController extends Controller
     {
         $transaksi = Transaksi::findOrFail($id);
         return view('transaksi.show', compact('transaksi'));
-    }
+    } 
 
     public function edit(string $id)
     {
@@ -58,6 +58,30 @@ class TransaksiController extends Controller
         $barang = Barang::all();
         $pembeli = Pembeli::all();
         return view('transaksi.edit', compact('transaksi', 'barang', 'pembeli'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'tanggal_transaksi' => 'required',
+            'jumlah' => 'required',
+            'total_harga' => 'required',
+        ], [
+            'tanggal_transaksi.required' => 'Nama wajib diisi!',
+            'jumlah.required' => 'Jenis kelamin wajib diisi!',
+            'total_harga.required' => 'Tanggal lahir wajib diisi!',
+        ]);
+
+        $transaksi = Transaksi::findOrFail($id);
+        $transaksi->tanggal_transaksi = $request->tanggal_transaksi;
+        $transaksi->jumlah = $request->jumlah;
+        $transaksi->total_harga = $request->total_harga;
+        $transaksi->id_barang = $request->id_barang;
+        $transaksi->id_pembeli = $request->id_pembeli;
+
+        $transaksi->save();
+        session()->flash('success', 'Data berhasil dirubah');
+        return redirect()->route('transaksi.index');
     }
 
     public function destroy(string $id)

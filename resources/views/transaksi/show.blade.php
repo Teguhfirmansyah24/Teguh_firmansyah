@@ -23,17 +23,18 @@
                                 <label>Tanggal Lahir</label>
                                 <input type="text" class="form-control" name="tanggal_lahir"
                                     value="{{ $transaksi->total_harga }}"disabled>
-                                <div class="mb-3">
-                                    <label>Nama Barang</label>
-                                    <input type="text" class="form-control" name="id_barang"
-                                        value="{{ $transaksi->barang->nama_barang }}" disabled>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Nama Pembeli</label>
-                                    <input type="text" class="form-control" name="id_pembeli"
-                                        value="{{ $transaksi->pembeli->nama_pembeli }}" disabled>
-                                </div>
-                                <a href="{{ route('transaksi.index') }}" class="btn btn-primary">kembali</a>
+                            </div>
+                            <div class="mb-3">
+                                <label>Nama Barang</label>
+                                <input type="text" class="form-control" name="id_barang"
+                                    value="{{ $transaksi->barang->nama_barang }}" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label>Nama Pembeli</label>
+                                <input type="text" class="form-control" name="id_pembeli"
+                                    value="{{ $transaksi->pembeli->nama_pembeli }}" disabled>
+                            </div>
+                            <a href="{{ route('transaksi.index') }}" class="btn btn-primary">kembali</a>
                         </form>
                     </div>
                 </div>
